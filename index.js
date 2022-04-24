@@ -9,7 +9,7 @@ const PORT = 8000
 const app = express()
 
 
-const url = 'https://www.jdsports.co.uk/men/mens-footwear/'
+const url = 'https://www.size.co.uk/mens/footwear/'
 
 // Call the axios library to the speficyc website
 axios(url)
@@ -26,19 +26,30 @@ axios(url)
     const items = []
 
     // For each item found with the class name 'itemContainer' we will get the text included
-    $('.itemContainer', html).each(function () {
+    $('.itemInformation', html).each(function () {
                 
-        const itemPrice = $(this).text()
+/*         const name = $('.itemTitle').text()
+        const price = $('.itemPrice').text()
 
+       items.push({
+           name,
+           price
+       }) */ 
 
-        items.push({
-            
-            itemPrice
-        })
+        //      TO-DO Isolate each of the variable into an array
 
-        console.log(items)
+       const a = $(this).text(); // 51%
+       const item = a.slice(' ')
+       console.log(a)
+      
     })
 
+    const checkChanges = async (items) =>{
+        // Compare each items if the price have been changes
+    }
+
+    
+    
 }).catch((err) => {
     console.log('Error found', err)
 });
