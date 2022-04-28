@@ -1,4 +1,5 @@
 const fs = require("fs");
+
 const generateDeltaFile = (
     pathToBaseFile,
     pathToFileForComparison,
@@ -7,6 +8,7 @@ const generateDeltaFile = (
     let baseFileContent = "./base-file.csv",
         secondaryFileContent = "./secondary-file.csv",
         changedLine = "changed";
+
     return new Promise((resolve, reject) => {
         const baseFileReadstream = fs.createReadStream(pathToBaseFile);
         baseFileReadstream
