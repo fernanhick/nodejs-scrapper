@@ -7,7 +7,7 @@ const generateDeltaFile = (
 ) => {
     let baseFileContent = "./base-file.csv",
         secondaryFileContent = "./secondary-file.csv",
-        changedLine = "changed";
+        changedLine = "";
 
     return new Promise((resolve, reject) => {
         const baseFileReadstream = fs.createReadStream(pathToBaseFile);
