@@ -3,6 +3,9 @@ const axios = require('axios')
 const cheerio = require('cheerio')
 const { response } = require('express')
 const ObjectsToCsv = require('objects-to-csv')
+const { v4: uuidv4 } = require('uuid')
+const { genProductId } = require('./genCode')
+
 // const { generateDeltaFile } = require("./csvcomparison");
 const PORT = 8000
 const app = express()
@@ -40,7 +43,7 @@ const getData = () => {
                 let price = $(this).find('.itemInformation').find('.pri').text()
 
                 const img = $(this).find('.img-placeholder').attr('data-src')
-                console.log(img)
+
                 if (price.length > 8) {
                     price = `${price.slice(6, 14).trim(' ')}`
                 }
@@ -54,6 +57,7 @@ const getData = () => {
                     name: title,
                     price: price,
                     img: img,
+                    id: genProductId(),
                 })
             })
 
